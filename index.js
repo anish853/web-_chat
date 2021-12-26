@@ -1,12 +1,6 @@
-const PORT = process.env.PORT || 3000;
-const io = require('socket.io')(PORT,{
-  cors:{
-    origin:"*"
-  }
-})
-
+const io = require('socket.io')(process.env.PORT || 3000,{
+  cors:{origin:"*"}})
 const users = {}
-
 io.on('connection', socket => {
   socket.on('new-user', nam => {
     users[socket.id] = nam
